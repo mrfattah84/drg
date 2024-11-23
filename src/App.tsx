@@ -29,27 +29,27 @@ function input() {
 function App() {
   const [data, setData] = useState(input().data);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     console.log(e);
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
 
-  const handleGenderChange = (value) => {
+  const handleGenderChange = (value: number) => {
     setData({ ...data, ['gender']: value });
   };
 
-  const handleGradeChange = (value) => {
+  const handleGradeChange = (value: number) => {
     setData({ ...data, ['hospitalGrade']: value });
   };
 
-  const handleICDChange = (e) => {
-    let icd = [...data.ICD];
+  const handleICDChange = (e: any) => {
+    let icd: any = [...data.ICD];
     icd[e.target.name] = e.target.value;
     setData({ ...data, ['ICD']: icd });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
   };
 
@@ -74,7 +74,7 @@ function App() {
           <label className=" whitespace-nowrap">جنسیت:</label>
           <Select
             name="gender"
-            onValueChange={(value) => handleGenderChange(value)}
+            onValueChange={(value) => handleGenderChange(parseInt(value))}
           >
             <SelectTrigger className="w-[180px]">
               <SelectValue />
@@ -143,7 +143,7 @@ function App() {
           <label className=" whitespace-nowrap">نوع بیمارستان:</label>
           <Select
             name="grade"
-            onValueChange={(value) => handleGradeChange(value)}
+            onValueChange={(value) => handleGradeChange(parseInt(value))}
           >
             <SelectTrigger className="w-[180px]">
               <SelectValue />
